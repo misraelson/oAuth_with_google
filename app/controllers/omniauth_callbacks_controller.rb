@@ -3,7 +3,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # The method below is implemented in user.rb
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.persisted?
-      binding.pry
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in_and_redirect @user, event: :authentication
     else
