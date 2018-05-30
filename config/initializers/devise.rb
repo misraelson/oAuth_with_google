@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3e3ff36286002f991a3f2651c289c44a4f653c41bcb7f9e93b283917c7da87deac880eb613f299c48710af9add6f960d0e455efef8fa996c1db2077eb7909682'
+  # config.secret_key = 'ec50604ad397f73de949bb5949c7da83e8b3cb527566d04767711dfce34ae4fc8702998131491995a7c14cb4bfe2d474f9d63f52325ce6dedb95f780d11830a4'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -264,7 +264,9 @@ Devise.setup do |config|
   client_secret = Rails.application.secrets[:google_secret]
   # Configure Google omniauth with proper scope
   config.omniauth :google_oauth2, client_id, client_secret, {
-    scope: "youtube.readonly,userinfo.email"
+    access_type: "offline",
+    prompt: 'consent',
+    scope: "userinfo.email,userinfo.profile,youtube,youtube.upload,youtube.readonly,youtube.force-ssl"
   }
 
   # ==> Warden configuration
